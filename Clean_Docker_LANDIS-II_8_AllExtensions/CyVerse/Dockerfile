@@ -18,6 +18,11 @@ FROM landis-ii_v8_linux AS landis-build
 # -----------------------------------------------------------------------------
 FROM jupyter/r-notebook:hub-4.0.1
 
+# Re-declare build args for this stage (ARGs before the first FROM are not
+# automatically in scope for later stages when used in RUN/ENV).
+ARG LOCAL_USER=jovyan
+ARG LANDIS_FOLDER=/bin/LANDIS_Linux/Core-Model-v8-LINUX
+
 USER root
 
 # Same system packages as in Clean_Docker_LANDIS-II_8_AllExtensions/Dockerfile (for LANDIS runtime)
