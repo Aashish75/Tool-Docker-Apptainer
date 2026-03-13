@@ -45,8 +45,8 @@ jobs:
       - name: Build CyVerse image
         run: |
           cd ${{ env.LANDIS_CONTEXT }}
-          docker build -f CyVerse/Dockerfile -t ${{ env.REGISTRY }}/${{ github.repository_owner }}/landis-ii-v8-cyverse:latest .
+          docker build -f CyVerse/Dockerfile -t ${{ env.REGISTRY }}/$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')/landis-ii-v8-cyverse:latest .
 
       - name: Push CyVerse image to GHCR
         run: |
-          docker push ${{ env.REGISTRY }}/${{ github.repository_owner }}/landis-ii-v8-cyverse:latest
+          docker push ${{ env.REGISTRY }}/$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')/landis-ii-v8-cyverse:latest
